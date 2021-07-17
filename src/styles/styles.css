@@ -1,0 +1,69 @@
+#page-auth {
+    display: flex;
+    align-items: stretch;
+    height: 100vh;
+}
+
+aside {
+        background-color: white;
+        color: #fff;
+        
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        padding: 120px 80px;
+}
+
+main {
+        background-color: #E5E5E5;
+        display: flex;
+        flex: 8;
+        flex-direction: column;
+
+        border: 1px solid #E5E5E5;
+        border-radius: 24px 0 0 0;
+        padding: 0 32px;
+}
+
+.header {
+        display: flex;
+}
+
+h1 {
+        margin-left: 1rem;
+}
+
+aside.favorites {
+        background-color: white;
+        
+        display: flex;
+        flex: 2;
+
+        padding: 120px 80px;
+}
+
+.infos {
+        display: flex;
+        justify-content: space-between;
+}
+
+.ticket-company {
+        display: flex;
+}
+
+.ticket-company div {
+        margin-left: 2rem;
+}
+
+.search {
+        display: flex;
+}
+
+.graph-infos {
+        background-color: white;
+}
+
+.recents {
+        display: flex;
+}

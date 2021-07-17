@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext, useState } from 'react'
+
+import './styles/styles.css'
+
+import Nav from "./components/Nav";
+import Header from "./components/Header";
+import {Search} from "./components/Search";
+import {StockData} from './components/StockData';
+
+
+import { FetchContext, FetchContextProvider } from './contexts/FetchContext'
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FetchContextProvider>
+        <div id="page-auth">
+          <Nav></Nav>
+          <main>
+            <Header />
+            <Search />
+            <StockData />
+          </main>
+          <aside className="favorites"></aside>
+        </div>
+    </FetchContextProvider>
   );
 }
 
-export default App;
+export default App
