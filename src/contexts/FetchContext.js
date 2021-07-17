@@ -6,6 +6,9 @@ export const FetchContextProvider = ({ children}) => {
     const [ recents, setRecents ] = useState([]);
     const [ stock, setStock ] = useState('');
     const [ intraday, setIntraday ] = useState(null)
+    // const timeout = 2000;
+
+    // const [ recentsHistory, setRecentsHistory ] = useState([])
 
     // const [ companySymbol, setCompanySymbol ] = useState('')
     // const [ companyName, setCompanyName ] = useState('')
@@ -41,6 +44,7 @@ export const FetchContextProvider = ({ children}) => {
         stockChangePercent: data.changePercent
         }
       console.log('Recent: ', recent);
+      
       setRecents([...recents, recent])
       console.log('FetchData: ', data)
     }
@@ -51,7 +55,11 @@ export const FetchContextProvider = ({ children}) => {
         console.log('Intraday: ', data)
         setIntraday(data)
       }
-    
+          
+      // setInterval(() => {
+      //   setStock(stock);
+      //   console.log(stock)
+      
     useEffect(() => {
       getData();
       getIntraday();

@@ -19,6 +19,7 @@ export const Search = () => {
           className="search"
           onSubmit={handleSubmit}>
           <input
+            required
             type="text"
             name="stock"
             value={input}
