@@ -147,7 +147,7 @@ export const FetchContextProvider = ({ children}) => {
       getIntraday();
       getMiddleRecentData();
       getOldestRecentData();
-      // timer();
+      timer();
     }, [stock, counter]);
 
     useEffect(() => {
