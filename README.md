@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Stock Market
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este repositório contém o código base da aplicação WEB Stock Market, disponível em: [https://github.com/luizfernandopezzi/StockMarket](https://github.com/luizfernandopezzi/StockMarket)
 
-## Available Scripts
+Caso não deseje executar a aplicação no ambiente local, esta encontra-se disponível em: [https://stock-market-mu.vercel.app/](https://stock-market-mu.vercel.app/)
 
-In the project directory, you can run:
+## Resumo
+Stock Market é o nome da aplicação desenvolvida com ReactJS cuja funcionalidade é acompanhar o status dos seguintes ativos do mercado financeiro americano (é possível acompanhar qualquer ativo listado na NASDAQ, porém, a interface pode apresentar defeitos visto que a aplicação não possui os logotipos de outras empresas em seu código):
+ 
+## Instruções de utilização
 
-### `yarn start`
+* ADBE: Adobe
+* AMZN: Amazon
+* AAPL: Apple
+* FB: Facebook
+* MSFT: Microsoft
+* SBUX: Starbucks
+* TWTR: Twitter
+ 
+Utilize o campo de pesquisa para inserir o código do ativo desejado e clique no botão pesquisar localizado logo ao lado (caracterizado por uma lupa e de cor azul).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Aguarde alguns instantes enquanto a aplicação realiza a conexão com a API IEX Cloud (https://iexcloud.io/).
+Uma estabelecida a conexção com a API, será exibido na tela as seguintes informações referentes ao ativo pesquisado:
+ 
+* Código
+* Nome da Empresa
+* Valor de mercado da última cotação (atualizado em tempo real conforme disponibilização da API)
+* Variação do valor atual em relação ao valor de fechamento do dia anterior em unidades monetárias (dólar) e em percentual.
+* Gráfico referente à variação diária do preço do ativo, com intervalo de 1 minuto.
+ 
+No rodapé da aplicação podem ser encontradas as informações dos ativos recém visualizados.
+ 
+É possível adicionar três ativos à lista de favoritos. Para isso, na região acima do gráfico, clique na estrela de fundo branco e borda azul localizada ao lado do código do ativo e do nome da empresa. 
+ 
+Caso deseje adicionar algum ativo visualizado recentemente aos favoritos, na região dos ativos recém visualizados, basta clicar na estrela de fundo branco e bordas azuis localizada na caixa do respectivo ativo.
+ 
+Para remover um ativo da lista de favoritos, ao lado direito da tela, na região dos ativos favoritos, clique na estrela de fundo azul localizada na caixa do respectivo ativo.
+ 
+## Instruções de instalação
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Siga as instruções abaixo para obter uma cópia dos arquivos da aplicação possibilitando a execução em sua máquina local.
 
-### `yarn test`
+## Pré-requisitos
+É necessário que você tenha o NojdeJS e Yarn ou NPM instalados em sua máquina.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Faça o download dos arquivos acessando o seguinte repositório da plataforma GitHub: [https://github.com/luizfernandopezzi/StockMarket](https://github.com/luizfernandopezzi/StockMarket)
 
-### `yarn build`
+Abra a pasta do projeto no ambiente do NodeJS e execute os seguintes comandos no terminal:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`yarn install`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Este comando é responsável por fazer o download de todos os arquivos complementares necessários para execução da aplicação.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Execute o seguinte script através do terminal do seu sistema operacional ou do NodeJS:
 
-### `yarn eject`
+`yarn start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Este comando executará a aplicação no modo de desenvolvimento. Uma vez inicializada, o seu navegador abrirá automaticamente.  Caso o seu navegador não abra automaticamente, abra manualmente e visite a seguinte URL: [http://localhost:3000](http://localhost:3000)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Layout:
+O layout desta aplicação foi desenvolvido com base em um protótipo FIGMA disponibilizado por *CONFIDENCIAL*.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Stack:
+* NodeJS [https://nodejs.org/en/](https://nodejs.org/en/)
+* Figma [https://www.figma.com/](https://www.figma.com/)
+* ReactJS [https://pt-br.reactjs.org/](https://pt-br.reactjs.org/)
+* Recharts [https://recharts.org/en-US/](https://recharts.org/en-US/)
+* Google Firebase [https://firebase.google.com/?hl=pt](https://firebase.google.com/?hl=pt)
+* React Fast Marquee [https://www.react-fast-marquee.com/](https://www.react-fast-marquee.com/)
+* IEX Cloud API [https://iexcloud.io/docs/api/](https://iexcloud.io/docs/api/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Autor
+Luiz Fernando Pezzi - LinkedIn [https://www.linkedin.com/in/luizfernandopezzi/](https://www.linkedin.com/in/luizfernandopezzi/)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Licença
+This project is licensed under the MIT license - see [LICENSE.md] (LICENSE.md) for more information.

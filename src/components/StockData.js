@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import star from '../assests/images/star.svg'
 import up from '../assests/images/up.svg'
 import down from '../assests/images/down.svg'
+
 import adbe from '../assests/images/adbe.svg'
 import aapl from '../assests/images/aapl.svg'
 import amzn from '../assests/images/amzn.svg'
@@ -33,7 +34,12 @@ export const StockData = () => {
 
     return (
         <div className="graph-infos">
-            { !currentStock ? null : (
+            { !currentStock ? (
+                <div className='infos-alert'>
+                    <p className="info-alert-text">Para visualizar informações sobre o mercado financeiro, digite o código do ativo no campo de pesquisa acima e clique no botão de pesquisa.</p>
+                    <p className="info-alert-text">Dados em tempo real disponíveis entre 09:30 e 16:00.</p>
+                </div>
+            ) : (
             <div className='infos'>
                 <div className='ticket-company'>
                     <img className='add-favorite' src={star} alt="Favoritar" onClick={handleNewFavorite}></img>

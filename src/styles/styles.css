@@ -59,7 +59,7 @@ main {
 }
 
 .header-title {
-        font-family: Graphik;
+        font-family: 'Roboto', sans-serif;;
         font-style: normal;
         font-weight: 600;
         font-size: 24px;
@@ -107,6 +107,20 @@ input:focus-visible{
         margin: 24px 20px 0;
 }
 
+.info-alert {
+        display: flex;
+        flex-direction: column;
+}
+
+.info-alert-text {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        margin-top: 2px;
+        letter-spacing: -0.005em;
+        color: #6e6e6e
+}
+
 .graph-infos {
         padding: 10px 20px;
 }
@@ -132,7 +146,7 @@ input:focus-visible{
 }
 
 .company-symbol{
-        font-family: Graphik;
+        font-family: 'Roboto', sans-serif;;
         font-weight: bold;
         font-size: 16px;
         line-height: 20px;
@@ -141,7 +155,7 @@ input:focus-visible{
 }
 
 .company-name{
-        font-family: Graphik;
+        font-family: 'Roboto', sans-serif;;
         font-size: 16px;
         line-height: 20px;
         margin-top: 2px;
@@ -153,7 +167,7 @@ input:focus-visible{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        font-family: Graphik;
+        font-family: 'Roboto', sans-serif;;
         font-style: normal;
         font-size: 16px;
         text-align: right;
@@ -170,11 +184,13 @@ input:focus-visible{
 }
 
 .stock-price p{
+        font-family: 'Roboto', sans-serif;
         font-weight: 600;
         margin: 0 0 2px 5px;
 }
 
 .subtitles {
+        font-family: 'Roboto', sans-serif;
         width: 100%;
         font-style: normal;
         font-weight: 600;
@@ -262,6 +278,7 @@ input:focus-visible{
         height: 35px;
         border-radius: 8px;
         font-weight: 500;
+        font-family: 'Roboto', sans-serif;
         background: #ea4335;
         color: #FFF;
         display: flex;
@@ -344,7 +361,7 @@ input:focus-visible{
 
 .user-info span {
         margin-left: 8px;
-        font-family: Graphik;
+        font-family: 'Roboto', sans-serif;;
         width: 100%;
         font-style: normal;
         font-weight: 600;
