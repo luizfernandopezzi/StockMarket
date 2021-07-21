@@ -1,72 +1,163 @@
-import React, { createContext, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+
+import ADBE from '../assests/images/adbe.svg'
+import AAPL from '../assests/images/aapl.svg'
+import AMZN from '../assests/images/amzn.svg'
+import FB from '../assests/images/fb.svg'
+import MSFT from '../assests/images/msft.svg'
+import SBUX from '../assests/images/sbux.svg'
+import TWTR from '../assests/images/twtr.svg'
 
 export const FetchContext = createContext({})
 
 export const FetchContextProvider = ({ children}) => {
-    const [ recents, setRecents ] = useState([]);
-    const [ stock, setStock ] = useState('');
-    const [ intraday, setIntraday ] = useState(null)
-    // const timeout = 2000;
-
-    // const [ recentsHistory, setRecentsHistory ] = useState([])
-
-    // const [ companySymbol, setCompanySymbol ] = useState('')
-    // const [ companyName, setCompanyName ] = useState('')
-    // const [ stockChange, setStockChange ] = useState('')
-    // const [ stockChangePercent, setStockChangePercent ] = useState('')
     
+    const [ stock, setStock ] = useState([]);
+    const [ currentStock, setCurrentStock ] = useState()
+    const [ middleRecent, setMiddleRecent ] = useState()
+    const [ oldestRecent, setOldestRecent ] = useState()
+
+    const [ intraday, setIntraday ] = useState(null)
+
+    const [ favorites, setFavorites ] = useState([])
+    const [ favoriteOne, setFavoriteOne ] = useState()
+    const [ favoriteTwo, setFavoriteTwo ] = useState()
+    const [ favoriteThree, setFavoriteThree ] = useState()
+
+    const [ counter, setCounter ] = useState(0)
+
+    const logos = [ADBE, AAPL, AMZN, FB, MSFT, SBUX, TWTR]
+
     console.log('Stock: ', stock)
-    console.log('Recents: ', recents)
+    console.log('curStock', currentStock)
     console.log('Intraday: ', intraday)
+    console.log('Favorites: ', favorites)
+    console.log('FavoriteOne', favoriteOne)
 
-    // function writeStockInfo(){
-    //     const recent = {
-    //         stock: stock,
-    //         companySymbol: companySymbol,
-    //         companyName: companyName,
-    //         stockChange: stockChange,
-    //         stockChangePercent: stockChangePercent
-    //         }
-    //       console.log('Recent: ', recent);
-    //       setRecents([...recents, recent])
-    //       console.log('Recents getData: ', recents)
-    // }
-
-    async function getData() {
-      const response = await fetch(`https://cloud.iexapis.com/stable/stock/${stock}/quote/lquote?token=pk_ac84674032ce467bbcc6d784c26646b6`);
+    async function getCurrentData(){
+      const response = await fetch(`https://cloud.iexapis.com/stable/stock/${stock[stock.length-1]}/quote/lquote?token=pk_ba3c51f0040e4247a52e198f98e203b7`);
       const data = await response.json();
-      const recent = {
-        stock: stock,
-        companySymbol: data.symbol,
-        companyName: data.companyName,
-        lastestPrice: data.latestPrice,
-        stockChange: data.change,
-        stockChangePercent: data.changePercent
-        }
-      console.log('Recent: ', recent);
-      
-      setRecents([...recents, recent])
-      console.log('FetchData: ', data)
+      const current = {
+          stock: stock,
+          companySymbol: data.symbol,
+          companyName: data.companyName,
+          latestPrice: data.latestPrice,
+          stockChange: data.change,
+          stockChangePercent: data.changePercent,
+      }
+      setCurrentStock(current)
+    }
+
+    async function getMiddleRecentData(){
+      if(stock.length > 1){
+        const response = await fetch(`https://cloud.iexapis.com/stable/stock/${stock[stock.length-2]}/quote/lquote?token=pk_ba3c51f0040e4247a52e198f98e203b7`);
+        const data = await response.json();
+        const infoMiddleRecent = {
+            stock: stock,
+            companySymbol: data.symbol,
+            companyName: data.companyName,
+            latestPrice: data.latestPrice,
+            stockChange: data.change,
+            stockChangePercent: data.changePercent,
+          }
+        setMiddleRecent(infoMiddleRecent)
+      }
+    }
+
+    async function getOldestRecentData(){
+      if(stock.length > 2){
+        const response = await fetch(`https://cloud.iexapis.com/stable/stock/${stock[stock.length-3]}/quote/lquote?token=pk_ba3c51f0040e4247a52e198f98e203b7`);
+        const data = await response.json();
+        const infoOldestRecent = {
+            stock: stock,
+            companySymbol: data.symbol,
+            companyName: data.companyName,
+            latestPrice: data.latestPrice,
+            stockChange: data.change,
+            stockChangePercent: data.changePercent,
+          }
+        setOldestRecent(infoOldestRecent)
+      }
+    }
+
+    async function favoriteOneData(){
+      if(favorites.length > 0){
+        const response = await fetch(`https://cloud.iexapis.com/stable/stock/${favorites[0]}/quote/lquote?token=pk_ba3c51f0040e4247a52e198f98e203b7`);
+        const data = await response.json();
+        const infoFavoriteOne = {
+            stock: stock,
+            companySymbol: data.symbol,
+            companyName: data.companyName,
+            latestPrice: data.latestPrice,
+            stockChange: data.change,
+            stockChangePercent: data.changePercent,
+          }
+        setFavoriteOne(infoFavoriteOne)
+      }
+    }
+
+    async function favoriteTwoData(){
+      if(favorites.length > 0){
+        const response = await fetch(`https://cloud.iexapis.com/stable/stock/${favorites[1]}/quote/lquote?token=pk_ba3c51f0040e4247a52e198f98e203b7`);
+        const data = await response.json();
+        const infoFavoriteTwo = {
+            stock: stock,
+            companySymbol: data.symbol,
+            companyName: data.companyName,
+            latestPrice: data.latestPrice,
+            stockChange: data.change,
+            stockChangePercent: data.changePercent,
+          }
+        setFavoriteTwo(infoFavoriteTwo)
+      }
+    }
+
+    async function favoriteThreeData(){
+      if(favorites.length > 0){
+        const response = await fetch(`https://cloud.iexapis.com/stable/stock/${favorites[2]}/quote/lquote?token=pk_ba3c51f0040e4247a52e198f98e203b7`);
+        const data = await response.json();
+        const infoFavoriteThree = {
+            stock: stock,
+            companySymbol: data.symbol,
+            companyName: data.companyName,
+            latestPrice: data.latestPrice,
+            stockChange: data.change,
+            stockChangePercent: data.changePercent,
+          }
+        setFavoriteThree(infoFavoriteThree)
+      }
     }
 
     async function getIntraday() {
-        const response = await fetch(`https://cloud.iexapis.com/stable//stock/${stock}/intraday-prices/lquote?token=pk_ac84674032ce467bbcc6d784c26646b6`);
-        const data = await response.json();
-        console.log('Intraday: ', data)
-        setIntraday(data)
-      }
-          
-      // setInterval(() => {
-      //   setStock(stock);
-      //   console.log(stock)
-      
+      const response = await fetch(`https://cloud.iexapis.com/stable/stock/${stock[stock.length-1]}/intraday-prices?token=pk_ba3c51f0040e4247a52e198f98e203b7`);
+      const data = await response.json();
+      console.log('Intraday: ', data)
+      setIntraday(data)
+    }
+    
+    function timer(){
+      setTimeout(()=>{
+        console.log(counter) 
+        setCounter(counter+1)}
+        ,2000)
+    }
+
     useEffect(() => {
-      getData();
+      getCurrentData();
       getIntraday();
-    }, [stock]);
+      getMiddleRecentData();
+      getOldestRecentData();
+      // timer();
+    }, [stock, counter]);
+
+    useEffect(() => {
+      favoriteOneData();
+      favoriteTwoData();
+      favoriteThreeData()
+    }, [favorites, counter]);
 
     return(
-        <FetchContext.Provider value={{ recents, setRecents, stock, setStock, intraday }}>
+        <FetchContext.Provider value={{ stock, setStock, currentStock, intraday, favorites, setFavorites, middleRecent, oldestRecent, setOldestRecent, favoriteOne, setFavoriteOne, favoriteTwo, setFavoriteTwo, favoriteThree, setFavoriteThree, favoriteOneData, favoriteTwoData, favoriteThreeData, logos }}>
             {children}
         </FetchContext.Provider>
     )

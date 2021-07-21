@@ -5,15 +5,16 @@ import lupa from '../assests/images/search.svg'
 import { FetchContext } from "../contexts/FetchContext";
 
 export const Search = () => {
-  const {setStock} = useContext(FetchContext)
+  const {stock, setStock} = useContext(FetchContext)
 
   const[input, setInput] = useState('')
-  
   const handleSubmit = (event) =>{
       event.preventDefault();
-      setStock(input)
+      if(input !== stock[stock.length-1]){
+        setStock(prev => [...prev, input])
+      }
   }
-  
+
     return (
         <form 
           className="search"
@@ -23,9 +24,9 @@ export const Search = () => {
             type="text"
             name="stock"
             value={input}
-            onChange={(event)=>{setInput(event.target.value)}}
+            onChange={(event)=>{setInput(event.target.value.toUpperCase())}}
           ></input>
-          <button 
+          <button className="btn-search"
             type="submit">
             <img src={lupa} alt="Buscar cotação"></img>
           </button>
